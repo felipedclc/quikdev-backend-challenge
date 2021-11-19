@@ -15,9 +15,7 @@ const create = [
     })),
     rescue(async (req, res) => {
         const { body } = req;
-        // console.log('body', body);
         const newUser = await UserService.create(body);
-        // console.log(newUser);
         if (newUser.error) return res.status(409).json(newUser.error);
 
         return res.status(201).json(newUser);
@@ -26,11 +24,37 @@ const create = [
 
 const findAll = rescue(async (_req, res) => {
     const users = await UserService.findAll();
-    console.log(users.createdAt);
+
     return res.status(200).json(users);
+});
+
+const findById = rescue(async (req, res) => {
+    const { id } = req.params;
+    const user = await UserService.findById(id);
+    if (user.error) return res.status(404).json(user.error);
+
+    return res.status(200).json(user);
+});
+
+const update = rescue(async (req, res) => {
+    const { params: { id }, body } = req;
+    const putUser = await UserService.update(id, body);
+
+    return res.status(200).json(putUser);
+});
+
+const remove = rescue(async (req, res) => {
+    const { id } = req.params;
+    const deleted = await UserService.remove(id);
+    if (deleted.error) return res.status(404).json(deleted.error);
+
+    return res.status(204).send('');
 });
 
 module.exports = {
     create,
     findAll,
+    findById,
+    update,
+    remove,
 };
