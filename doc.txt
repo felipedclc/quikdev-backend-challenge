@@ -1,0 +1,115 @@
+Documentação
+
+----------
+
+Padrão dos endpoints
+
+Os endpoints seguem o padrão http://localhost:3001/entidade/. 
+Por exemplo, o endpoind em que o cadastro de um usuáiro é realizado será o http://localhost:3001/user/
+
+----------
+
+Retorno dos endpoints
+
+----------USER----------
+
+REGISTER: POST http://localhost:3001/user/
+
+body => 
+
+{
+  "name": "Felipe Cardoso",
+  "username": "felipedclc",
+  "birthdate": "17/05/1989",
+  "address": "Av XII de Maio",
+  "addressNumber": "186",
+  "primaryPhone": "(31) 97132-9748",
+  "description": "description test"
+}
+
+response => 
+
+{
+    "_id": "6198e0c38c8b1440b4aeb5d4",
+    "name": "Felipe Cardoso",
+    "username": "felipedclc",
+    "birthdate": "17/05/1989",
+    "address": "Av XII de Maio",
+    "addressNumber": "186",
+    "primaryPhone": "(31) 97132-9748",
+    "description": "description test",
+    "createdAt": "2021-11-20T11:49:23.170Z"
+}
+
+FIND ALL: GET http://localhost:3001/user
+
+response =>
+
+[
+    {
+        "_id": "6198e0c38c8b1440b4aeb5d4",
+        "name": "Felipe Cardoso",
+        "username": "felipedclc",
+        "birthdate": "17/05/1989",
+        "address": "Av XII de Maio",
+        "addressNumber": "186",
+        "primaryPhone": "(31) 97132-9748",
+        "description": "description test",
+        "createdAt": "2021-11-20T11:49:23.170Z"
+    },
+    {
+        "_id": "6198e1918c8b1440b4aeb5d5",
+        "name": "Ana Luiza",
+        "username": "analu",
+        "birthdate": "23/05/1991",
+        "address": "Av XV de Maio",
+        "addressNumber": "305",
+        "primaryPhone": "(31) 98792-9748",
+        "description": "description test",
+        "createdAt": "2021-11-20T11:52:49.128Z"
+    }
+]
+
+FIND BY ID: GET http://localhost:3001/user/id
+
+params => ex: 6198e0c38c8b1440b4aeb5d4
+
+response =>
+
+{
+    "_id": "6198e3828c8b1440b4aeb5d6",
+    "name": "Felipe Cardoso",
+    "username": "felipedclc",
+    "birthdate": "17/05/1989",
+    "address": "Av XII de Maio",
+    "addressNumber": "186",
+    "primaryPhone": "(31) 97132-9748",
+    "description": "description test",
+    "createdAt": "2021-11-20T12:01:06.796Z"
+}
+
+UPDATE: PUT http://localhost:3001/user/id
+
+params => ex: 6198e0c38c8b1440b4aeb5d4
+
+response =>
+
+{
+    "_id": "6198e0c38c8b1440b4aeb5d4",
+    "name": "Felipe Carvalho",
+    "username": "felipedclc",
+    "birthdate": "17/05/1989",
+    "address": "Av XII de Maio",
+    "addressNumber": "201",
+    "primaryPhone": "(31) 97132-9748",
+    "description": "description test",
+    "createdAt": "2021-11-20T11:49:23.170Z"
+}
+
+DELETE: DELETE http://localhost:3001/user/id
+
+params => ex: 6198e0c38c8b1440b4aeb5d4
+
+response =>
+
+''

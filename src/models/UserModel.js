@@ -59,9 +59,7 @@ const update = async (userId, body) => {
 };
 
 const remove = async (userId) => {
-    console.log(userId);
     const db = await connection();
-    // console.log(ObjectId(userId));
     return db.collection('user').deleteOne({ _id: ObjectId(userId) });
 };
 
